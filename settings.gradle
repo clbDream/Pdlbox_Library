@@ -10,9 +10,14 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" } //微博
+        maven { url 'https://artifact.bytedance.com/repository/AwemeOpenSDK' } //抖音
     }
 }
 rootProject.name = "PdlBox_library"
 include ':app'
 include ':MainLibrary'
 include ':librarys:bugly'
+include ':librarys:Umeng'

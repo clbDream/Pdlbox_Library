@@ -2,6 +2,7 @@ package com.clb.pdlbox_library
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.pdlbox.tools.utils.RegexUtils
 import com.tencent.bugly.crashreport.CrashReport
 
 class MainActivity : AppCompatActivity() {

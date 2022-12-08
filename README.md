@@ -17,13 +17,14 @@
 * 多功能记录项目<事迹>
   ：[RecordThings-Android](https://github.com/clbDream/RecordThings-Android) ![](https://img.shields.io/github/stars/clbDream/RecordThings-Android.svg) ![](https://img.shields.io/github/forks/clbDream/RecordThings-Android.svg)
   
-* 库多多(常用sdk集合项目)：[Pdlbox_Tools](https://github.com/clbDream/Pdlbox_Tools) ![](https://img.shields.io/github/stars/clbDream/Pdlbox_Tools.svg) ![](https://img.shields.io/github/forks/clbDream/Pdlbox_Tools.svg)
+* 工具库(常用工具类集合项目)：[Pdlbox_Tools](https://github.com/clbDream/Pdlbox_Tools) ![](https://img.shields.io/github/stars/clbDream/Pdlbox_Tools.svg) ![](https://img.shields.io/github/forks/clbDream/Pdlbox_Tools.svg)
 
 ## 项目构成
   1. app(项目主工程目录,你的代码在这里编写)
   2. MainLibrary(库多多主库,其他库都通过这个库来集成,主工程目录只用集成这一个库)
   3. librarys(这里主要存放所搜集的三方库)
   4. bugly(bugly崩溃搜集库)
+  4. Umeng(友盟相关库)
 
 ## 如何使用
 
@@ -34,22 +35,63 @@
   2. 按照你的实际需求,将librarys中的库导入到你的项目中(建议将所有库导入,可进行灵活配置)
   3. 修改库多多初始化方法,去掉不需要的库
 ```
-object Kuduoduo {
+/**
+ * 库多多入口类
+ */
+class Kuduoduo {
 
-    fun init(application: Application){
-        //初始化Bugly
-        BuglyLibrary.init(application)
+    class Builder(private val application: Application) {
+
+        fun initBugly(appKey: String): Builder {
+            BuglyLibrary.init(application, appKey)
+            return this
+        }
+
+        /**
+         * 预初始化
+         */
+        fun preInitUmeng(appKey: String, channle: String): Builder {
+            UmengLibrary.preInit(application, appKey, channle)
+            return this
+        }
+
+        /**
+         * 正式初始化
+         */
+        fun initUmeng(
+            appKey: String,
+            channle: String,
+            pushSecret: String,
+            deviceType: Int,
+        ): Builder {
+            UmengLibrary.init(application, appKey, channle, pushSecret, deviceType)
+            return this
+        }
+
+        fun create(): Kuduoduo {
+            return Kuduoduo()
+        }
+
     }
 }
 ```
   4. 将你的app主项目依赖MainLibrary库
   5. 初始化库多多
 ```
-class MyApp: Application() {
+class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Kuduoduo.init(this)
+
+        //以下SDK根据你的实际需求调用,这里只是做演示使用
+        Kuduoduo.Builder(this)
+            //初始化Bugly
+            .initBugly("6dbea536a8")
+            //预初始化友盟(可在应用启动时调用)
+            .preInitUmeng("6391f71088ccdf4b7e9f2fd2","渠道信息")
+            //初始化友盟(在同意隐私政策之后再调用)
+            .initUmeng("6391f71088ccdf4b7e9f2fd2","渠道信息","ed2a19398e6ddf107dd7b5de062c2018", UMConfigure.DEVICE_TYPE_PHONE)
+            .create()
     }
 }
 ```

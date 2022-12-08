@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.clb.umeng">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--    // 在应用的AndroidManifest.xml添加如下<queries>标签-->
+    <queries>
+        <!--        // 指定微信包名-->
+        <package android:name="com.tencent.mm" />
+        <!--        //指定qq包名-->
+        <package android:name="com.tencent.mobileqq" />
+        <!--        //指定微博包名-->
+        <package android:name="com.sina.weibo" />
+        <!--         //指定企业微信包名-->
+        <package android:name="com.tencent.wework" />
+        <!--        //指定QQ空间包名-->
+        <package android:name="com.qzone" />
+        <!--        // 指定钉钉包名-->
+        <package android:name="com.alibaba.android.rimet" />
+        <!--        // 指定支付宝包名-->
+        <package android:name="com.eg.android.AlipayGphone" />
+        <!--        // 指定instagram包名-->
+        <package android:name="com.instagram.android" />
+        <!--        // 指定抖音包名-->
+        <package android:name="com.ss.android.ugc.aweme" />
+
+    </queries>
+</manifest>
