@@ -19,4 +19,38 @@
   
 * 库多多(常用sdk集合项目)：[Pdlbox_Tools](https://github.com/clbDream/Pdlbox_Tools) ![](https://img.shields.io/github/stars/clbDream/Pdlbox_Tools.svg) ![](https://img.shields.io/github/forks/clbDream/Pdlbox_Tools.svg)
 
+## 项目构成
+  1. app(项目主工程目录,你的代码在这里编写)
+  2. MainLibrary(库多多主库,其他库都通过这个库来集成,主工程目录只用集成这一个库)
+  3. librarys(这里主要存放所搜集的三方库)
+  4. bugly(bugly崩溃搜集库)
+
 ## 如何使用
+
+### 如果你是新开项目,可以直接以此项目作为基础来进行开发,避免了导入库时存在的各种问题
+
+### 如果是老项目需要使用这个库
+  1. 将MainLibrary库导入你的项目中
+  2. 按照你的实际需求,将librarys中的库导入到你的项目中(建议将所有库导入,可进行灵活配置)
+  3. 修改库多多初始化方法,去掉不需要的库
+```
+object Kuduoduo {
+
+    fun init(application: Application){
+        //初始化Bugly
+        BuglyLibrary.init(application)
+    }
+}
+```
+  4. 将你的app主项目依赖MainLibrary库
+  5. 初始化库多多
+```
+class MyApp: Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        Kuduoduo.init(this)
+    }
+}
+```
+  6. 至此,库多多引入完成
