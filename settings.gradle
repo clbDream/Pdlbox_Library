@@ -3,6 +3,10 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" } //微博
+        maven { url 'https://artifact.bytedance.com/repository/AwemeOpenSDK' } //抖音
+        maven { url 'https://developer.huawei.com/repo/'}
     }
 }
 dependencyResolutionManagement {
@@ -14,6 +18,7 @@ dependencyResolutionManagement {
         maven { url 'https://repo1.maven.org/maven2/' }
         maven { url "https://dl.bintray.com/thelasterstar/maven/" } //微博
         maven { url 'https://artifact.bytedance.com/repository/AwemeOpenSDK' } //抖音
+        maven { url 'https://developer.huawei.com/repo/'}
     }
 }
 rootProject.name = "PdlBox_library"

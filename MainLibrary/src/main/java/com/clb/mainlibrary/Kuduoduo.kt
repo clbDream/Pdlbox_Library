@@ -11,16 +11,16 @@ class Kuduoduo {
 
     class Builder(private val application: Application) {
 
-        fun initBugly(appKey: String): Builder {
-            BuglyLibrary.init(application, appKey)
+        fun initBugly(): Builder {
+            BuglyLibrary.init(application)
             return this
         }
 
         /**
          * 预初始化
          */
-        fun preInitUmeng(appKey: String, channle: String): Builder {
-            UmengLibrary.preInit(application, appKey, channle)
+        fun preInitUmeng(channle: String,logEnable: Boolean): Builder {
+            UmengLibrary.preInit(application, channle, logEnable)
             return this
         }
 
@@ -28,12 +28,11 @@ class Kuduoduo {
          * 正式初始化
          */
         fun initUmeng(
-            appKey: String,
             channle: String,
-            pushSecret: String,
             deviceType: Int,
+            logEnable: Boolean
         ): Builder {
-            UmengLibrary.init(application, appKey, channle, pushSecret, deviceType)
+            UmengLibrary.init(application, channle, deviceType,logEnable)
             return this
         }
 
