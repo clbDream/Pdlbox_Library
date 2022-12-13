@@ -51,11 +51,15 @@ object UmengLibrary {
         PushAgent.getInstance(application).register(object : UPushRegisterCallback {
             override fun onSuccess(deviceToken: String) {
                 //注册成功后返回deviceToken，deviceToken是推送消息的唯一标志
-                Log.i(TAG, "注册成功 deviceToken:$deviceToken")
+                if (BuildConfig.DEBUG) {
+                    Log.i(TAG, "注册成功 deviceToken:$deviceToken")
+                }
             }
 
             override fun onFailure(errCode: String, errDesc: String) {
-                Log.e(TAG, "注册失败 code:$errCode, desc:$errDesc")
+                if (BuildConfig.DEBUG) {
+                    Log.e(TAG, "注册失败 code:$errCode, desc:$errDesc")
+                }
             }
         })
 
