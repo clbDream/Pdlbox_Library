@@ -27,6 +27,7 @@
 3. librarys(这里主要存放所搜集的三方库)
 4. bugly(bugly崩溃搜集库)
 4. Umeng(友盟相关库)
+4. amap(高德地图)
 
 ## 如何使用
 
@@ -112,6 +113,15 @@ class MyApp : Application() {
         //需在用户同意隐私政策协议之后调用，否则会出现合规问题
         PushAgent.getInstance(this).onAppStart()
     2. 推送配置的PUSH_SECRET是Umeng Message Secret,不是App Master Secret
+
+## 地图相关
+
+    1. 高德地图初始化
+```
+//TODO ***确保调用SDK任何接口前先调用更新隐私合规updatePrivacyShow、updatePrivacyAgree两个接口并且参数值都为true，若未正确设置有崩溃风险***
+        MapsInitializer.updatePrivacyShow(this, true, true);
+        MapsInitializer.updatePrivacyAgree(this, true);
+```
 
 # 常见问题
 

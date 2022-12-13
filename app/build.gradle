@@ -36,4 +36,8 @@ dependencies {
 
     //工具库 https://github.com/clbDream/Pdlbox_Tools
     implementation 'com.gitee.clbDream:pdl-box_tools:1.1.0'
+
+    implementation ('com.github.getActivity:XXPermissions:16.5'){
+        exclude group: 'com.android.support'
+    }
 }

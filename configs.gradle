@@ -18,4 +18,6 @@ ext {
     XIAOMI_KEY = "请自行配置"
     //华为APPID
     HUAWEI_ID = "请自行配置"
+    //高德地图KEY
+    APAM_APP_KEY = "2f1d7567b305ac22162a11c9a7417833"
 }

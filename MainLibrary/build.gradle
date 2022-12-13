@@ -2,14 +2,11 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
+apply from : '../common.gradle'
 
 android {
-    compileSdk 32
 
     defaultConfig {
-        minSdk 21
-        targetSdk 32
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -35,4 +32,6 @@ dependencies {
     api project(path: ':librarys:bugly')
     //友盟
     api project(path: ':librarys:Umeng')
+    //高德地图
+    api project(path: ':librarys:amap')
 }
