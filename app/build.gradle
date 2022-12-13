@@ -35,5 +35,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     //工具库 https://github.com/clbDream/Pdlbox_Tools
-    implementation 'com.gitee.clbDream:pdl-box_tools:1.0.2'
+    implementation 'com.gitee.clbDream:pdl-box_tools:1.1.0'
 }
