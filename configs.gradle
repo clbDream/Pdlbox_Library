@@ -1,7 +1,7 @@
 ext {
     // 友盟 AppKey
     UMENG_APP_KEY = "6391f71088ccdf4b7e9f2fd2"
-    //友盟推送
+    //友盟推送 用的Umeng Message Secret
     UMENG_PUSH_SECRET = "ed2a19398e6ddf107dd7b5de062c2018"
     // QQ AppId
     QQ_APP_ID = "101828096"

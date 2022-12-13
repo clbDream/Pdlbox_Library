@@ -104,6 +104,15 @@ class MyApp : Application() {
 
 6. 至此,库多多引入完成
 
+# 特别说明
+
+## 推送相关
+    1. 需要在统同意隐私政策时候调用
+        //该方法是推送平台多维度推送决策必调用的方法，请务必调用
+        //需在用户同意隐私政策协议之后调用，否则会出现合规问题
+        PushAgent.getInstance(this).onAppStart()
+    2. 推送配置的PUSH_SECRET是Umeng Message Secret,不是App Master Secret
+
 # 常见问题
 
 1. 第三方SDK中的appId等参数怎么配置 相关的配置信息已封装在configs.gradle文件中,可通过修改对应的信息来替换
